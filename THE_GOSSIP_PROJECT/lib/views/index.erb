@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>The Gossip Project</title>
+	</head>
+	<body>
+		<h1>Mon super site de gossip, du dossier views !</h1>
+	</body>
+	Salut coco ! Bienvenue sur The Gossip Project, le projet dédié aux fameux potins tant connus et tant attendus de la session 6 de ThE FUCKING HACKING PROJECT ! Je te propose de commencer par <a href="gossips/new/">créer un potin</a> !
+	<br />
+	<br />
+	Voici la liste des potins :
+	<%
+	count = 1
+	gossips.each do |gossip| %>
+		<p>
+			<%= gossip.author %><br />
+			<%= gossip.content %><br />
+			Lien vers la fiche du potin : <a href="gossips/<%= count %>/">ICI</a>
+		</p>
+	<%
+	count += 1
+	end %>
+</html>
