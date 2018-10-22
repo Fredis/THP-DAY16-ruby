@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>The Gossip Project - A Gossip Page Edition</title>
+	</head>
+	<body>
+		<h1>PAGE POTIN !</h1>
+	</body>
+	Voici la page du potin n° <%=id_gossip %> dont l'auteur est <%=gossip[0] %>
+	<br />
+	<br />
+	<form action = '/gossips/<%=id_gossip %>/edit/' method='POST'>
+	Voici le potin que vous pouvez directement modifier : 
+	<input type="text" value="<%=gossip[1] %>" name="gossip_content" />
+	<br />
+	<input type="submit" value="Update" />
+	</form>
+	<br />
+	<br />
+	<a href="/">Lien pour revenir à la page des potins.</a>
+</html>

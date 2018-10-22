@@ -1,4 +1,5 @@
 require 'gossip'
+require 'comment'
 
 class ApplicationController < Sinatra::Base
 
@@ -22,6 +23,27 @@ class ApplicationController < Sinatra::Base
 			gossip: Gossip.new("", "").find(params[:id]),
 			id_gossip: params[:id]
 		}
+	end
+
+	get '/gossips/:id/edit/' do
+		erb :gossip_page_edit, locals: {
+			gossip: Gossip.new("", "").find(params[:id]),
+			id_gossip: params[:id]
+		}
+	end
+
+	post '/gossips/:id/edit/' do
+		Gossip.new("", "").update(params[:id], params["gossip_content"])
+		redirect '/'
+	end
+
+	get '/gossips/:id/comment/' do
+		erb :new_gossip_comment, locals: {id_gossip: params[:id]}
+	end
+
+	post '/gossips/:id/comment/' do
+		Comment.new(params[:id], params["gossip_comment"]).new_comment
+		redirect '/'
 	end
 
 end
